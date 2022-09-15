@@ -1,0 +1,144 @@
+'-----------------------
+#dynamic 0x800000
+#org @new
+lock
+faceplayer
+msgbox @1
+callstd 0x5
+compare LASTRESULT 0x0
+if 0x1 goto @nop
+msgbox @2
+callstd 0x2
+special 0x9F
+waitstate
+compare 0x8004 0x6
+if 0x4 goto @nop
+callasm 0x8XXXXXX
+callasm 0x8XXXXXX
+compare 0x8000 0x0
+if 0x1 call @fight
+compare 0x8000 0x1
+if 0x1 call @fly
+compare 0x8000 0x2
+if 0x1 call @poison
+compare 0x8000 0x3
+if 0x1 call @ground
+compare 0x8000 0x4
+if 0x1 call @rock
+compare 0x8000 0x5
+if 0x1 call @bug
+compare 0x8000 0x6
+if 0x1 call @ghost
+compare 0x8000 0x7
+if 0x1 call @steel
+compare 0x8000 0x8
+if 0x1 call @fire
+compare 0x8000 0x9
+if 0x1 call @water
+compare 0x8000 0xA
+if 0x1 call @grass
+compare 0x8000 0xB
+if 0x1 call @electr
+compare 0x8000 0xC
+if 0x1 call @psy
+compare 0x8000 0xD
+if 0x1 call @ice
+compare 0x8000 0xE
+if 0x1 call @dragon
+compare 0x8000 0xF
+if 0x1 call @dark
+buffernumber 0x1 0x8001
+msgbox @4
+callstd 0x2
+release
+end
+
+#org @fight
+bufferstring 0x0 @str3
+return
+
+#org @fly
+bufferstring 0x0 0x824F1AE
+return
+
+#org @poison
+bufferstring 0x0 0x824F1B5
+return
+
+#org @ground
+bufferstring 0x0 0x824F1BC
+return
+
+#org @rock
+bufferstring 0x0 0x824F1C3
+return
+
+#org @bug
+bufferstring 0x0 0x824F1CA
+return
+
+#org @ghost
+bufferstring 0x0 0x824F1D1
+return
+
+#org @steel
+bufferstring 0x0 0x824F1D8
+return
+
+#org @fire
+bufferstring 0x0 0x824F1E6
+return
+
+#org @water
+bufferstring 0x0 0x824F1ED
+return
+
+#org @grass
+bufferstring 0x0 0x824F1F4
+return
+
+#org @electr
+bufferstring 0x0 @str2
+return
+
+#org @psy
+bufferstring 0x0 @str1
+return
+
+#org @ice
+bufferstring 0x0 0x824F209
+return
+
+#org @dragon
+bufferstring 0x0 0x824F210
+return
+
+#org @dark
+bufferstring 0x0 0x824F217
+return
+
+#org @nop
+msgbox @3
+callstd 0x2
+end
+
+#org @1
+= Hiyaa!\nI am the Hidden Power Master!\pI can tell you what type and base\npower your Pokémons' Hidden Power\lhave, all for free!\pHow about it?
+
+#org @2
+= Which Pokémon's Hidden Power should\nI awaken?
+
+#org @3
+= Come back anytime if your Pokémon\nwant their Hidden Power awaken!\pHiyaa!
+
+#org @str1
+= Psychic
+
+#org @str2
+= Electric
+
+#org @str3
+= Fighting
+
+#org @4
+= Hiyaa! This Pokémon has a\n[buffer1] type Hidden Power!\pIt has a base power of [buffer2]!\pTHIS POWER LEVEL IS OVER 9 MILLION!\nVisit again if you want your\lHidden Power awoken again! Hiyaa!

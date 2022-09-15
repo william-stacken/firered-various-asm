@@ -1,0 +1,559 @@
+#dynamic 0x810000
+#org @new
+lockall
+checkflag 0x243
+if 0x0 goto 0x816CAA0
+msgbox @1 '"A Voltorb Flip Machine!\nWant to play?"
+callstd 0x5
+compare LASTRESULT 0x0
+if 0x1 goto 0x816C96A
+setanimation 0x0 0xFF
+setanimation 0x1 0xA
+setanimation 0x2 0xE
+doanimation 0x40
+checkanimation 0x40
+showcoins 0x0 0x0
+msgbox @2
+callstd 0x5
+compare LASTRESULT 0x1
+if 0x1 call @instruction
+resetvars
+setvar 0x8003 0x0
+setvar 0x8004 0x0
+setvar 0x8005 0x0
+setvar 0x8007 0x0
+setvar 0x800A 0x1
+call @random
+call @random
+call @random
+call @random
+call @random
+setvar 0x8005 0x0
+call @random
+call @random
+call @random
+call @random
+call @random
+setvar 0x8005 0x0
+call @random
+call @random
+call @random
+call @random
+call @random
+setvar 0x8005 0x0
+call @random
+call @random
+call @random
+call @random
+call @random
+setvar 0x8005 0x0
+call @random
+call @random
+call @random
+call @random
+call @random
+callasm 0x8800000
+compare LASTRESULT 0x1
+if 0x1 goto 0x8800000
+callasm 0x8800000
+callasm 0x8800000
+msgbox2 0x203F400
+waitmsgbox
+callasm 0x8800000
+multichoice 0xA 0x1 0x31 0x0
+copyvar 0x8008 LASTRESULT
+compare 0x8008 0x0
+if 0x1 goto @115
+compare 0x8008 0x1
+if 0x1 goto @114
+compare 0x8008 0x2
+if 0x1 goto @113
+compare 0x8008 0x3
+if 0x1 goto @112
+compare 0x8008 0x4
+if 0x1 goto @111
+compare 0x8008 0x5
+if 0x1 goto @goto12
+compare 0x8008 0x7F
+if 0x1 goto @exit
+end
+
+#org @goto12
+callasm 0x8800000
+multichoice 0xD 0x1 0x31 0x0
+copyvar 0x8008 LASTRESULT
+compare 0x8008 0x0
+if 0x1 goto @125
+compare 0x8008 0x1
+if 0x1 goto @124
+compare 0x8008 0x2
+if 0x1 goto @123
+compare 0x8008 0x3
+if 0x1 goto @122
+compare 0x8008 0x4
+if 0x1 goto @121
+compare 0x8008 0x5
+if 0x1 goto @goto13
+compare 0x8008 0x7F
+if 0x1 goto @exit
+end
+
+#org @goto13
+callasm 0x8800000
+multichoice 0x10 0x1 0x31 0x0
+copyvar 0x8008 LASTRESULT
+compare 0x8008 0x0
+if 0x1 goto @135
+compare 0x8008 0x1
+if 0x1 goto @134
+compare 0x8008 0x2
+if 0x1 goto @133
+compare 0x8008 0x3
+if 0x1 goto @132
+compare 0x8008 0x4
+if 0x1 goto @131
+compare 0x8008 0x5
+if 0x1 goto @goto14
+compare 0x8008 0x7F
+if 0x1 goto @exit
+end
+
+#org @goto14
+callasm 0x8800000
+multichoice 0x13 0x1 0x31 0x0
+copyvar 0x8008 LASTRESULT
+compare 0x8008 0x0
+if 0x1 goto @145
+compare 0x8008 0x1
+if 0x1 goto @144
+compare 0x8008 0x2
+if 0x1 goto @143
+compare 0x8008 0x3
+if 0x1 goto @142
+compare 0x8008 0x4
+if 0x1 goto @141
+compare 0x8008 0x5
+if 0x1 goto @goto15
+compare 0x8008 0x7F
+if 0x1 goto @exit
+end
+
+#org @goto15
+callasm 0x8800000
+multichoice 0x16 0x1 0x31 0x0
+copyvar 0x8008 LASTRESULT
+compare 0x8008 0x0
+if 0x1 goto @155
+compare 0x8008 0x1
+if 0x1 goto @154
+compare 0x8008 0x2
+if 0x1 goto @153
+compare 0x8008 0x3
+if 0x1 goto @152
+compare 0x8008 0x4
+if 0x1 goto @151
+compare 0x8008 0x5
+if 0x1 goto 0x8800000
+compare 0x8008 0x7F
+if 0x1 goto @exit
+end
+
+#org @111
+checkflag 0x2109
+if 0x1 goto @already
+setvar 0x8008 0x0
+setvar 0x8009 0x0
+call @checkpress
+setflag 0x2109
+goto 0x8800000
+
+#org @112
+checkflag 0x210A
+if 0x1 goto @already
+setvar 0x8008 0x2
+setvar 0x8009 0x0
+call @checkpress
+setflag 0x210A
+goto 0x8800000
+
+#org @113
+checkflag 0x210B
+if 0x1 goto @already
+setvar 0x8008 0x4
+setvar 0x8009 0x0
+call @checkpress
+setflag 0x210B
+goto 0x8800000
+
+#org @114
+checkflag 0x210C
+if 0x1 goto @already
+setvar 0x8008 0x6
+setvar 0x8009 0x0
+call @checkpress
+setflag 0x210C
+goto 0x8800000
+
+#org @115
+checkflag 0x210D
+if 0x1 goto @already
+setvar 0x8008 0x8
+setvar 0x8009 0x0
+call @checkpress
+setflag 0x210D
+goto 0x8800000
+
+#org @121
+checkflag 0x210E
+if 0x1 goto @already
+setvar 0x8008 0x0
+setvar 0x8009 0x2
+call @checkpress
+setflag 0x210E
+goto 0x8800000
+
+#org @122
+checkflag 0x210F
+if 0x1 goto @already
+setvar 0x8008 0x2
+setvar 0x8009 0x2
+call @checkpress
+setflag 0x210F
+goto 0x8800000
+
+#org @123
+checkflag 0x2110
+if 0x1 goto @already
+setvar 0x8008 0x4
+setvar 0x8009 0x2
+call @checkpress
+setflag 0x2110
+goto 0x8800000
+
+#org @124
+checkflag 0x2111
+if 0x1 goto @already
+setvar 0x8008 0x6
+setvar 0x8009 0x2
+call @checkpress
+setflag 0x2111
+goto 0x8800000
+
+#org @125
+checkflag 0x2112
+if 0x1 goto @already
+setvar 0x8008 0x8
+setvar 0x8009 0x2
+call @checkpress
+setflag 0x2112
+goto 0x8800000
+
+#org @131
+checkflag 0x2113
+if 0x1 goto @already
+setvar 0x8008 0x0
+setvar 0x8009 0x4
+call @checkpress
+setflag 0x2113
+goto 0x8800000
+
+#org @132
+checkflag 0x2114
+if 0x1 goto @already
+setvar 0x8008 0x2
+setvar 0x8009 0x4
+call @checkpress
+setflag 0x2114
+goto 0x8800000
+
+#org @133
+checkflag 0x2115
+if 0x1 goto @already
+setvar 0x8008 0x4
+setvar 0x8009 0x4
+call @checkpress
+setflag 0x2115
+goto 0x8800000
+
+#org @134
+checkflag 0x2116
+if 0x1 goto @already
+setvar 0x8008 0x6
+setvar 0x8009 0x4
+call @checkpress
+setflag 0x2116
+goto 0x8800000
+
+#org @135
+checkflag 0x2117
+if 0x1 goto @already
+setvar 0x8008 0x8
+setvar 0x8009 0x4
+call @checkpress
+setflag 0x2117
+goto 0x8800000
+
+#org @141
+checkflag 0x2118
+if 0x1 goto @already
+setvar 0x8008 0x0
+setvar 0x8009 0x6
+call @checkpress
+setflag 0x2118
+goto 0x8800000
+
+#org @142
+checkflag 0x2119
+if 0x1 goto @already
+setvar 0x8008 0x2
+setvar 0x8009 0x6
+call @checkpress
+setflag 0x2119
+goto 0x8800000
+
+#org @143
+checkflag 0x211A
+if 0x1 goto @already
+setvar 0x8008 0x4
+setvar 0x8009 0x6
+call @checkpress
+setflag 0x211A
+goto 0x8800000
+
+#org @144
+checkflag 0x211B
+if 0x1 goto @already
+setvar 0x8008 0x6
+setvar 0x8009 0x6
+call @checkpress
+setflag 0x211B
+goto 0x8800000
+
+#org @145
+checkflag 0x211C
+if 0x1 goto @already
+setvar 0x8008 0x8
+setvar 0x8009 0x6
+call @checkpress
+setflag 0x211C
+goto 0x8800000
+
+#org @151
+checkflag 0x211D
+if 0x1 goto @already
+setvar 0x8008 0x0
+setvar 0x8009 0x8
+call @checkpress
+setflag 0x211D
+goto 0x8800000
+
+#org @152
+checkflag 0x211E
+if 0x1 goto @already
+setvar 0x8008 0x2
+setvar 0x8009 0x8
+call @checkpress
+setflag 0x211E
+goto 0x8800000
+
+#org @153
+checkflag 0x211F
+if 0x1 goto @already
+setvar 0x8008 0x4
+setvar 0x8009 0x8
+call @checkpress
+setflag 0x211F
+goto 0x8800000
+
+#org @154
+checkflag 0x2120
+if 0x1 goto @already
+setvar 0x8008 0x6
+setvar 0x8009 0x8
+call @checkpress
+setflag 0x2120
+goto 0x8800000
+
+#org @155
+checkflag 0x2121
+if 0x1 goto @already
+setvar 0x8008 0x8
+setvar 0x8009 0x8
+call @checkpress
+setflag 0x2121
+goto 0x8800000
+
+#org @already
+msgbox @5
+callstd 0x2
+goto 0x8800000
+
+#org @checkpress
+callasm 0x8800000
+buffernumber 0x0 0x8008
+buffernumber 0x1 0x800A
+compare 0x8008 0x0
+if 0x1 goto @0point
+compare 0x8008 0x1
+if 0x1 call @1point
+compare 0x8008 0x2
+if 0x1 call @2point
+compare 0x8008 0x3
+if 0x1 call @3point
+callasm 0x8800000
+compare 0x8009 0x1
+if 0x1 goto @finishedplay
+return
+
+#org @finishedplay
+fanfare 0x1
+msgbox @9
+callstd 0x4
+waitfanfare
+msgbox @10
+callstd 0x4
+call @clearflag
+sound 0xF8
+givecoins 0x800A
+updatecoins 0x0 0x0
+checksound
+msgbox @11
+callstd 0x5
+compare LASTRESULT 0x1
+if 0x1 goto 0x8800000
+hidecoins 0x0 0x0
+releaseall
+end
+
+#org @0point
+sound 0xAA
+call @clearflag
+checksound
+msgbox @6
+callstd 0x5
+compare LASTRESULT 0x1
+if 0x1 goto 0x8800000
+hidecoins 0x0 0x0
+releaseall
+end
+
+#org @1point
+sound 0xF8
+msgbox @7
+callstd 0x2
+checksound
+return
+
+#org @2point
+sound 0xF8
+msgbox @7
+callstd 0x2
+checksound
+return
+
+#org @3point
+sound 0xF8
+msgbox @7
+callstd 0x2
+checksound
+return
+
+#org @exit
+msgbox @8
+callstd 0x5
+compare LASTRESULT 0x0
+if 0x1 goto 0x8800000
+call @clearflag
+hidecoins 0x0 0x0
+releaseall
+end
+
+#org @clearflag
+clearflag 0x2109
+clearflag 0x210A
+clearflag 0x210B
+clearflag 0x210C
+clearflag 0x210D
+clearflag 0x210E
+clearflag 0x210F
+clearflag 0x2110
+clearflag 0x2111
+clearflag 0x2112
+clearflag 0x2113
+clearflag 0x2114
+clearflag 0x2115
+clearflag 0x2116
+clearflag 0x2117
+clearflag 0x2118
+clearflag 0x2119
+clearflag 0x211A
+clearflag 0x211B
+clearflag 0x211C
+clearflag 0x211D
+clearflag 0x211E
+clearflag 0x211F
+clearflag 0x2120
+clearflag 0x2121
+return
+
+#org @random
+random 0x8
+copyvar 0x8006 LASTRESULT
+compare 0x8006 0x4
+if 0x1 call @zero
+compare 0x8006 0x5
+if 0x4 call @one
+callasm 0x8800000
+addvar 0x8005 0x2
+addvar 0x8007 0x1
+return
+
+#org @zero
+setvar 0x8006 0x0
+return
+
+#org @one
+setvar 0x8006 0x1
+return
+
+#org @instruction
+msgbox @3
+callstd 0x2
+msgbox @4
+callstd 0x5
+compare LASTRESULT 0x0
+if 0x1 goto @instruction
+return
+
+#org @1
+= A Voltorb Flip Machine!\nWant to play?
+
+#org @2
+= There are some instructions\nhere[.]\pWould you like to read them? 
+
+#org @3
+= Welcome to our Voltorb Flip\nmachines!\pThese are low-budget ones\nimported from an anonymous\lperson and are not as fancy as\lthe ones in Goldenrod City, but\lthey should work like a chram.\pThe machine will randomly generate\nCoins and Voltorbs that you'll\lchoose from in a box that displays\lonly one vertical row of the\lfield at a time.\pIt will also show how many Voltorb\nand Coins in total there are in\leach row in a box below that also\ldisplays a coordinate for the row.
+
+#org @4
+= For example, 11 is the vertical\nrow at the far left, 15 is the\lvertical row at the far right\land 21 is the horizontal row\lat the bottom.\pIf the amount of Coins in a row is\nover 10, an exclamation mark\lwill appear.\pThe B button can be pressed at any\ntime to exit the game,\lhowever, all coins will be\nlost!\pGLHF!\n Mechania Game Corner\pUnderstood everything?
+
+#org @5
+= This card has already been\nchosen.
+
+#org @6
+= Oh no! You get 0 coins!\pWould you like to play again?
+
+#org @7
+= [buffer1]! Recieved [buffer2] coin(s)!
+
+#org @8
+= Are you sure you want to\nquit? All coins will be lost!
+
+#org @9
+= Game clear!\pThere are no hidden x2 and x3\ncards left.
+
+#org @10
+= [player] recieved [buffer2] coin(s)!
+
+#org @11
+= Would you like to play again?

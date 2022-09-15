@@ -1,0 +1,165 @@
+'-----------------------
+#dynamic 0x800000
+#org @new
+lock
+textcolor 0x2
+checkflag 0x229
+if 0x1 goto @open
+msgbox @1
+callstd 0x2
+checkitem 0x163 0x1
+compare LASTRESULT 0x0
+if 0x1 goto @next
+msgbox @2
+callstd 0x2
+sound 0x26
+setmaptile 0x9 0x16 0x285 0x0
+setmaptile 0x9 0x17 0x283 0x0
+special 0x8E
+msgbox @3
+callstd 0x2
+setflag 0x229
+sound 0x15
+applymovement 0x8 @mov1
+waitmovement 0x0
+cry 0x58 0x0
+waitcry
+sound 0xA
+applymovement 0x8 @mov2
+waitmovement 0x0
+sound 0xA
+applymovement 0x8 @mov2
+waitmovement 0x0
+msgbox @4
+callstd 0x5
+compare LASTRESULT 0x1
+if 0x1 goto @yes
+goto @no
+release
+end
+
+#org @open
+msgbox @8
+callstd 0x2
+release
+end
+
+#org @party
+hidesprite 0x8
+fanfare 0x101
+msgbox2 @7
+waitmsgbox
+waitfanfare
+bufferpokemon 0x0 0x58
+msgbox 0x81A56A7 '"Do you want to give a nickname to\n..."
+callstd 0x5
+compare LASTRESULT 0x0
+if 0x1 goto @setflag
+call 0x81A8C27
+call 0x81A74EB
+goto @setflag
+end
+
+#org @boxer
+call 0x81A8C3C
+goto @setflag
+end
+
+#org @box
+hidesprite 0x8
+fanfare 0x101
+msgbox2 @7 '"[player] obtained an EEVEE!"
+waitmsgbox
+waitfanfare
+bufferpokemon 0x0 0x58
+msgbox 0x81A56A7 '"Do you want to give a nickname to\n..."
+callstd 0x5
+compare LASTRESULT 0x0
+if 0x1 goto @boxer
+call 0x81A8C33
+goto @boxer
+end
+
+#org @full
+textcolor 0x3
+msgbox @6 
+callstd 0x2
+release
+end
+
+#org @yes
+setvar 0x4001 0x58
+givepokemon 0x58 0xC 0xD3 0x0 0x0 0x0
+compare LASTRESULT 0x0
+if 0x1 goto @party
+compare LASTRESULT 0x1
+if 0x1 goto @box
+compare LASTRESULT 0x2
+if 0x1 goto @full
+release
+end
+
+#org @setflag
+setflag 0x22A
+release
+end
+
+#org @no
+closeonkeypress
+cry 0x58 0x5
+waitcry
+applymovement 0x8 @mov3
+waitmovement 0x0
+msgbox @5
+callstd 0x2
+release
+end
+
+#org @next
+release
+end
+
+#org @mov1
+#raw 3
+#raw 62
+#raw 1B
+#raw 1B
+#raw 1B
+#raw 20
+#raw 2D
+#raw FE
+
+#org @mov2
+#raw 52
+#raw FE
+
+#org @mov3
+#raw A
+#raw 30
+#raw FE
+
+
+
+#org @1
+= It's locked!\nIt seems to need a key[.]
+
+#org @2
+= [player] used the Cage Key.
+
+#org @3
+= The cage opened!
+
+#org @4
+= Croagunk is very grateful.\nIt seems to want to join your\lparty!\pAccept?
+
+#org @5
+= Croagunk went back into its cage.
+
+#org @6
+= The boxes are full and cannot\naccept any more Pokémon!\pYou have played this game\nWAY too much[.]
+
+#org @7
+= [player] obtained a Croagunk!
+
+#org @8
+= The cage is open.
